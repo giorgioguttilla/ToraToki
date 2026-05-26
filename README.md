@@ -1,8 +1,10 @@
-# ToraToki
+# ToraToki 🐯⌚️
 
 虎時へようこそ！
 
-ToraToki is a local-first Japanese language learning desktop app meant to streamline acquisition and built fluency through the power of spaced repetition. ToraToki allows you to build a review deck and actually _practice_ with them via conversation with an integrated chatbot, enhancing the otherwise abstracted and contextless experience of flashcard review and facilitating easy mining of more review material.
+ToraToki is a local-first Japanese language learning desktop app meant to streamline acquisition and built fluency through the power of spaced repetition. 
+
+ToraToki allows you to build a review deck and actually _practice_ with them via conversation with an integrated chatbot, enhancing the otherwise abstracted and contextless experience of flashcard review and facilitating easy mining of more review material.
 
 ## ToraToki has
 - A BYOT (Bring Your Own Token) LLM chat interface that integrates with your personal review deck to use _your_ words in context in _your_ conversations
