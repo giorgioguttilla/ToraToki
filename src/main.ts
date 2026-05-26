@@ -93,7 +93,7 @@ const createWindow = () => {
     minWidth: 1080,
     minHeight: 720,
     backgroundColor: '#09090b',
-    title: 'ToraChat',
+    title: 'ToraToki',
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false,
@@ -248,7 +248,7 @@ const registerIpcHandlers = () => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
-  app.setName('ToraChat');
+  app.setName('ToraToki');
   initializeSettingsStore();
   initializeDatabases({
     userDataPath: app.getPath('userData'),

@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for contributing to ToraChat.
+Thanks for contributing to ToraToki.
 
 ## Quick start
 

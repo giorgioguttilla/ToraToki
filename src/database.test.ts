@@ -175,7 +175,7 @@ describe('database helper logic', () => {
       '2025-05-25T12:00:00.000Z',
     );
 
-    expect(markdown).toContain('# ToraChat SRS Export');
+    expect(markdown).toContain('# ToraToki SRS Export');
     expect(markdown).toContain('- Total cards: 1');
     expect(markdown).toContain('    line1');
     expect(markdown).toContain('    line2');

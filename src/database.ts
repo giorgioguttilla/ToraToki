@@ -1012,7 +1012,7 @@ export const buildSrsExportMarkdown = (items: SrsItemRow[], exportedAt: string) 
   });
 
   return [
-    '# ToraChat SRS Export',
+    '# ToraToki SRS Export',
     '',
     `- Exported at: ${exportedAt}`,
     `- Total cards: ${items.length}`,
@@ -2017,7 +2017,7 @@ export const exportSrsItems = (outputDirectory: string): SrsExportResult => {
   const items = listSrsItemRows();
   const exportedAt = new Date().toISOString();
   const safeTimestamp = exportedAt.replace(/[:.]/g, '-');
-  const filePath = path.join(outputDirectory, `torachat-srs-export-${safeTimestamp}.md`);
+  const filePath = path.join(outputDirectory, `toratoki-srs-export-${safeTimestamp}.md`);
 
   mkdirSync(outputDirectory, { recursive: true });
   writeFileSync(filePath, buildSrsExportMarkdown(items, exportedAt), 'utf8');

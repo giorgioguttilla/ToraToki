@@ -2,7 +2,7 @@
 
 ## Overview
 
-ToraChat is built around three layers:
+ToraToki is built around three layers:
 
 - Electron main process for app startup, IPC, SQLite, and file access
 - Preload bridge for typed renderer access to privileged operations

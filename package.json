@@ -1,8 +1,8 @@
 {
-  "name": "torachat",
-  "productName": "ToraChat",
+  "name": "toratoki",
+  "productName": "ToraToki",
   "version": "1.0.0",
-  "description": "ToraChat is a local-first Japanese learning desktop app built with Electron Forge, Vite, React, shadcn/ui, Kuromoji, and SQLite.",
+  "description": "ToraToki is a local-first Japanese learning desktop app built with Electron Forge, Vite, React, shadcn/ui, Kuromoji, and SQLite.",
   "main": ".vite/build/main.js",
   "private": true,
   "scripts": {

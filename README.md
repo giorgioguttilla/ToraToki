@@ -1,10 +1,10 @@
-# ToraChat
+# ToraToki
 
 A local-first Japanese learning desktop app built with Electron Forge, Vite, React, shadcn/ui, Kuromoji-based tokenization, SQLite, and JMdict-powered dictionary lookups.
 
 Contributing guide: [CONTRIBUTING.md](CONTRIBUTING.md)
 
-## What ToraChat does
+## What ToraToki does
 
 - Shows Japanese text with furigana
 - Lets you hover or click words for dictionary information
@@ -30,7 +30,7 @@ npm run setup
 
 This installs dependencies and bundles JMdict only when `assets/jmdict/jmdict-eng.json` is missing.
 
-## Run ToraChat
+## Run ToraToki
 
 Start the desktop app in development mode:
 
@@ -40,7 +40,7 @@ npm run dev
 
 The app launches Electron Forge with Vite-powered renderer hot reload.
 
-## Package ToraChat
+## Package ToraToki
 
 To build distributables for sharing:
 
@@ -56,7 +56,7 @@ npm run package
 
 ## Useful scripts
 
-- `npm run dev` - launch ToraChat in development mode
+- `npm run dev` - launch ToraToki in development mode
 - `npm run setup` - install dependencies and conditionally bundle JMdict
 - `npm run bundle` - bundle JMdict only if not already present
 - `npm run icon:generate` - regenerate the macOS app icon assets
@@ -90,4 +90,4 @@ JMdict content is distributed by EDRDG. See [docs/EDRDG.md](docs/EDRDG.md) for a
 - `better-sqlite3` stays in the Electron main process only.
 - The renderer is kept untrusted and communicates through the preload bridge.
 - Furigana rendering prefers semantic HTML with `<ruby>` and `<rt>`.
-- ToraChat is designed to work offline once local assets are available.
+- ToraToki is designed to work offline once local assets are available.

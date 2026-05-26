@@ -1586,7 +1586,7 @@ export default function ChatLandingApp() {
         : current,
     );
 
-    console.log('[ToraChat] Chat completion prompt', {
+    console.log('[ToraToki] Chat completion prompt', {
       requestId,
       request: inferenceRequest,
     });
