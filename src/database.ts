@@ -514,20 +514,20 @@ const ensureSrsDatabase = () => {
 const isSrsCategory = (value: string): value is SrsCategory =>
   SRS_CATEGORY_VALUES.includes(value as SrsCategory);
 
-const normalizeSrsCategory = (value: string): SrsCategory =>
+export const normalizeSrsCategory = (value: string): SrsCategory =>
   isSrsCategory(value) ? value : 'translate';
 
-const normalizeSrsCategoryFilters = (categories?: SrsCategory[]) =>
+export const normalizeSrsCategoryFilters = (categories?: SrsCategory[]) =>
   categories
     ? [...new Set(categories.filter((category) => isSrsCategory(category)))]
     : [];
 
-const normalizeSourceEntryId = (value: number | null | undefined) =>
+export const normalizeSourceEntryId = (value: number | null | undefined) =>
   typeof value === 'number' && Number.isInteger(value) && value > 0
     ? value
     : null;
 
-const isSrsReviewRating = (value: string): value is SrsReviewRating =>
+export const isSrsReviewRating = (value: string): value is SrsReviewRating =>
   SRS_REVIEW_RATINGS.includes(value as SrsReviewRating);
 
 const toPersistedFsrsCardFields = (row: SrsItemRow) => ({
@@ -979,13 +979,13 @@ const isUniqueConstraintError = (error: unknown) => {
   );
 };
 
-const indentMultiline = (value: string) =>
+export const indentMultiline = (value: string) =>
   value
     .split('\n')
     .map((line) => `    ${line}`)
     .join('\n');
 
-const buildSrsExportMarkdown = (items: SrsItemRow[], exportedAt: string) => {
+export const buildSrsExportMarkdown = (items: SrsItemRow[], exportedAt: string) => {
   const sections = items.map((item, index) => {
     const details = [
       `### ${index + 1}. ${item.item}`,
@@ -1050,7 +1050,7 @@ const isChatMessageCorrectionDetail = (
   );
 };
 
-const sanitizeChatMessageCorrection = (value: unknown): ChatMessage['correction'] => {
+export const sanitizeChatMessageCorrection = (value: unknown): ChatMessage['correction'] => {
   if (!value || typeof value !== 'object') {
     return null;
   }
@@ -1095,7 +1095,7 @@ const isChatMessage = (value: unknown): value is ChatMessage => {
   );
 };
 
-const parseChatMessages = (historyJson: string): ChatMessage[] => {
+export const parseChatMessages = (historyJson: string): ChatMessage[] => {
   try {
     const parsed = JSON.parse(historyJson) as unknown;
 
@@ -1179,14 +1179,14 @@ const resolveBundledDictionaryJsonPath = ({
 
 const unique = <T>(values: T[]) => [...new Set(values)];
 
-const uniqueStrings = (values: Array<string | null | undefined>) =>
+export const uniqueStrings = (values: Array<string | null | undefined>) =>
   unique(
     values
       .map((value) => value?.trim() ?? '')
       .filter((value): value is string => value.length > 0),
   );
 
-const hasKanji = (value: string) => /[\u3400-\u9FFF々〆ヵヶ]/u.test(value);
+export const hasKanji = (value: string) => /[\u3400-\u9FFF々〆ヵヶ]/u.test(value);
 
 const safeGetField = async (
   db: JmdictDb,
@@ -1335,6 +1335,8 @@ const compareWordMatches = (left: WordMatch, right: WordMatch) =>
   left.lengthPenalty - right.lengthPenalty ||
   Number(left.word.id) - Number(right.word.id);
 
+export const compareDictionaryWordMatches = compareWordMatches;
+
 const toDictionaryEntry = (
   match: WordMatch,
   tags: JmdictTagMap,
@@ -1358,7 +1360,7 @@ const toDictionaryEntry = (
   matchedForm: match.target.value,
 });
 
-const buildSearchTargets = (query: DictionaryLookupQuery): SearchTarget[] => {
+export const buildSearchTargets = (query: DictionaryLookupQuery): SearchTarget[] => {
   const targets: SearchTarget[] = [];
   const seen = new Set<string>();
 
@@ -1398,7 +1400,7 @@ const buildSearchTargets = (query: DictionaryLookupQuery): SearchTarget[] => {
   return targets;
 };
 
-const exactnessForTarget = (word: JmdictWord, target: SearchTarget) => {
+export const exactnessForTarget = (word: JmdictWord, target: SearchTarget) => {
   const kanjiExact = word.kanji.some((entry) => entry.text === target.value);
   const kanaExact = word.kana.some((entry) => entry.text === target.value);
 
