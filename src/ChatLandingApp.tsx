@@ -133,10 +133,10 @@ const INPUT_CLASSNAME =
 const JAPANESE_CHAT_SYSTEM_PROMPT_BASE =
   'you are having a conversation in japanese. respond only in japanese';
 const CONVERSATIONAL_CHAT_SYSTEM_PROMPT =
-  'Use natural, casual spoken Japanese like a regular person in everyday conversation. Prefer plain style and common contractions where natural, keep it friendly and direct, and avoid overly formal or textbook phrasing unless the user clearly asks for it.';
+  'Use natural, casual spoken Japanese like a regular person in everyday conversation. Use plain-style endings by default and avoid polite forms (teineigo / desu-masu), honorific-humble keigo, and stiff textbook phrasing unless the user explicitly asks for polite speech. Keep the tone friendly, direct, and conversational, with natural contractions and filler where appropriate.';
 const SENTENCE_TRANSLATION_SYSTEM_PROMPT =
   'translate this sentence from japanese to english';
-const UTTERANCE_CORRECTION_SYSTEM_PROMPT = `You are critiquing a Japanese language learner's utterance.
+const UTTERANCE_CORRECTION_SYSTEM_PROMPT_BASE = `You are critiquing a Japanese language learner's utterance.
 
 Return only valid JSON. Do not wrap it in markdown fences. Use this exact schema:
 {
@@ -156,6 +156,16 @@ User utterance: 昨日図書館行った。
 Response: {"correctedText":"昨日は図書館に行きました。","translation":"I went to the library yesterday.","corrections":[{"originalText":"昨日図書館行った","correctedText":"昨日は図書館に行きました。","explanation":"Added は and に, and changed the verb to a natural polite past form."}]}
 
 If the utterance is already natural, keep correctedText very close to the original, still provide a translation, and return an empty corrections array.`;
+const buildUtteranceCorrectionSystemPrompt = (chatTone: ChatTone) =>
+  `${UTTERANCE_CORRECTION_SYSTEM_PROMPT_BASE}
+
+The conversation tone is ${chatTone}. Keep your corrections aligned with that register.
+
+If the tone is conversational, prefer natural casual Japanese: plain forms, everyday vocabulary, and no teinei-go unless the input itself clearly calls for it. Avoid over-correcting casual speech into stiff, polite speech.
+
+If the tone is formal, prefer natural polite Japanese: use teinei-go when that is the appropriate best practice, keep the wording polished, and avoid making the result sound too casual.
+
+When explaining corrections, describe them using the target register's best practices.`;
 const SENTENCE_BREAK_PATTERN = /[。！？!?]/u;
 const CHAT_PANE_MAX_WIDTH = '56rem';
 const CHAT_PROMPT_SRS_MIN_ITEMS = 4;
@@ -1589,7 +1599,7 @@ export default function ChatLandingApp() {
     window.languageApp.inference.startChatCompletionStream({
       requestId: correctionRequestId,
       request: {
-        systemPrompt: UTTERANCE_CORRECTION_SYSTEM_PROMPT,
+        systemPrompt: buildUtteranceCorrectionSystemPrompt(chatTone),
         messages: [{ role: 'user' as const, content }],
       },
     });
