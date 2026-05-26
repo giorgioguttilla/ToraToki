@@ -1,5 +1,7 @@
 # ToraToki
 
+虎時へようこそ！
+
 A local-first Japanese learning desktop app built with Electron Forge, Vite, React, shadcn/ui, Kuromoji-based tokenization, SQLite, and JMdict-powered dictionary lookups.
 
 Contributing guide: [CONTRIBUTING.md](CONTRIBUTING.md)
