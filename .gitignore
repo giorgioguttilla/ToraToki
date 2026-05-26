@@ -97,3 +97,6 @@ assets/jmdict/jmdict-eng.json
 # Build outputs
 dist/
 public/assets/jmdict/jmdict-eng.json
+
+# Accidental local bundle output
+/main.js

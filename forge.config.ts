@@ -16,6 +16,14 @@ const config: ForgeConfig = {
     asar: true,
     icon: appIconPath,
     extraResource: [path.resolve(__dirname, 'assets', 'jmdict')],
+    // Keep production dependencies for runtime externals used by the main process.
+    ignore: (file) => {
+      if (!file) {
+        return false;
+      }
+
+      return !file.startsWith('/.vite') && !file.startsWith('/node_modules');
+    },
   },
   rebuildConfig: {},
   makers: [
