@@ -2664,9 +2664,10 @@ function PromptedSrsReviewInspectorPanel({
             </div>
           ) : isAnswerVisible ? (
             <div className="flex flex-col gap-2">
-              <div className="grid grid-cols-4 gap-2">
+              <div className="grid grid-cols-2 gap-2">
                 {ratingPreviews.map((preview) => (
                   <ReviewRatingButton
+                    className="w-full whitespace-normal"
                     key={preview.rating}
                     disabled={isSubmitting}
                     isSubmitting={isSubmitting}

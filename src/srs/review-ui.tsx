@@ -85,12 +85,14 @@ export const getSrsReviewPreviewsForItem = (item: SrsItem, reviewedAt: Date = ne
   );
 
 export function ReviewRatingButton({
+  className,
   disabled,
   isSubmitting,
   onClick,
   rating,
   scheduledDue,
 }: {
+  className?: string;
   disabled: boolean;
   isSubmitting: boolean;
   onClick: (rating: SrsReviewRating) => void;
@@ -102,23 +104,24 @@ export function ReviewRatingButton({
       type="button"
       variant="outline"
       className={cn(
-        'h-auto min-h-0 items-start justify-between rounded-2xl px-2 py-2 text-left',
+        'h-auto min-h-0 min-w-0 items-start justify-between rounded-2xl px-2 py-2 text-left',
         REVIEW_RATING_BUTTON_STYLES[rating],
+        className,
       )}
       onClick={() => {
         onClick(rating);
       }}
       disabled={disabled}
     >
-      <div className="flex items-start gap-3">
+      <div className="flex min-w-0 items-start gap-3">
         <span className="inline-flex size-6 items-center justify-center rounded-full border border-current/20 bg-background/70 text-[11px] font-semibold">
           {SRS_REVIEW_SHORTCUTS[rating]}
         </span>
-        <div>
-          <p className="text-sm font-semibold tracking-tight">
+        <div className="min-w-0">
+          <p className="wrap-break-word text-sm font-semibold tracking-tight">
             {getSrsReviewRatingLabel(rating)}
           </p>
-          <p className="mt-1 text-xs text-current/75">
+          <p className="mt-1 wrap-break-word text-xs text-current/75">
             {formatRelativeDue(scheduledDue)}
           </p>
         </div>
