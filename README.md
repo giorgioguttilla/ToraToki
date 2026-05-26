@@ -2,17 +2,17 @@
 
 虎時へようこそ！
 
-A local-first Japanese learning desktop app built with Electron Forge, Vite, React, shadcn/ui, Kuromoji-based tokenization, SQLite, and JMdict-powered dictionary lookups.
+ToraToki is a local-first Japanese language learning desktop app meant to streamline acquisition and built fluency through the power of spaced repetition. ToraToki allows you to build a review deck and actually _practice_ with them via conversation with an integrated chatbot, enhancing the otherwise abstracted and contextless experience of flashcard review and facilitating easy mining of more review material.
+
+## ToraToki has
+- A BYOT (Bring Your Own Token) LLM chat interface that integrates with your personal review deck to use _your_ words in context in _your_ conversations
+- A fully-fledged SRS flashcard review system built into the application, with non-obtrusive badge updates for items up for review and integration with LLM chat
+- Automatic corrections for user messages
+- Full Jisho/furigana reading support - one-click auto card generation
+- Ability to use [LM Studio](https://lmstudio.ai/) for local inference
+- Completely free. All data stays on your machine
 
 Contributing guide: [CONTRIBUTING.md](CONTRIBUTING.md)
-
-## What ToraToki does
-
-- Shows Japanese text with furigana
-- Lets you hover or click words for dictionary information
-- Stores SRS cards locally in SQLite
-- Keeps the renderer UI-only and routes file/database access through Electron main + preload
-- Works offline after the bundled dictionary assets are prepared
 
 ## Requirements
 
@@ -86,10 +86,3 @@ On first launch after the dictionary is present, the app creates its local cache
 ## Attribution
 
 JMdict content is distributed by EDRDG. See [docs/EDRDG.md](docs/EDRDG.md) for attribution and usage notes.
-
-## Development notes
-
-- `better-sqlite3` stays in the Electron main process only.
-- The renderer is kept untrusted and communicates through the preload bridge.
-- Furigana rendering prefers semantic HTML with `<ruby>` and `<rt>`.
-- ToraToki is designed to work offline once local assets are available.
