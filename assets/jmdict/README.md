@@ -1,11 +1,11 @@
 Place bundled JMdict assets in this folder.
 
-Run `npm run dictionary:bundle` to download the latest English JMDict-Simplified JSON as `jmdict-eng.json`.
+Run `npm run bundle` to download the latest English JMDict-Simplified JSON as `jmdict-eng.json` when it is missing.
 
 Notes:
 
 - `jmdict-eng.json` is not stored in Git because it is too large for normal GitHub pushes.
-- After cloning the repo, run `npm run dictionary:bundle` to fetch it locally.
+- After cloning the repo, run `npm run bundle` to fetch it locally when needed.
 - If you already have a copy, you can manually place `jmdict-eng.json` in this folder.
 - End users of a packaged app do not need to do this step; packaged builds include this folder as an app resource.
 

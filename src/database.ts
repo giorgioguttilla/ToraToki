@@ -265,7 +265,7 @@ let dictionaryStatus: DictionaryStatus = {
   version: null,
   dictDate: null,
   detail:
-    'Bundled JMdict JSON was not found yet. Run `npm run dictionary:bundle` to add it before packaging.',
+    'Bundled JMdict JSON was not found yet. Run `npm run bundle` to add it before packaging.',
 };
 
 const initializeSrsStorage = (database: SqliteDatabase) => {
@@ -1493,7 +1493,7 @@ const startBundledDictionaryInitialization = (options: DatabaseInitOptions) => {
       version: null,
       dictDate: null,
       detail:
-        'Bundled JMdict JSON was not found. Run `npm run dictionary:bundle` before packaging the app.',
+        'Bundled JMdict JSON was not found. Run `npm run bundle` before packaging the app.',
     };
     return;
   }

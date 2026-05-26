@@ -2,6 +2,8 @@
 
 A local-first Japanese learning desktop app built with Electron Forge, Vite, React, shadcn/ui, Kuromoji-based tokenization, SQLite, and JMdict-powered dictionary lookups.
 
+Contributing guide: [CONTRIBUTING.md](CONTRIBUTING.md)
+
 ## What ToraChat does
 
 - Shows Japanese text with furigana
@@ -20,19 +22,13 @@ A local-first Japanese learning desktop app built with Electron Forge, Vite, Rea
 ## Install
 
 1. Clone the repository.
-2. Install dependencies:
+2. Run one-command setup:
 
 ```bash
-npm install
+npm run setup
 ```
 
-3. Prepare the bundled JMdict JSON used by the app:
-
-```bash
-npm run dictionary:bundle
-```
-
-This downloads `assets/jmdict/jmdict-eng.json` locally so the app can bundle it for development and packaging.
+This installs dependencies and bundles JMdict only when `assets/jmdict/jmdict-eng.json` is missing.
 
 ## Run ToraChat
 
@@ -61,7 +57,8 @@ npm run package
 ## Useful scripts
 
 - `npm run dev` - launch ToraChat in development mode
-- `npm run dictionary:bundle` - download the bundled JMdict JSON
+- `npm run setup` - install dependencies and conditionally bundle JMdict
+- `npm run bundle` - bundle JMdict only if not already present
 - `npm run icon:generate` - regenerate the macOS app icon assets
 - `npm run lint` - run ESLint
 - `npm run typecheck` - run TypeScript type-checking
@@ -70,7 +67,9 @@ npm run package
 
 ## Dictionary data
 
-The app uses JMdict-derived data for local dictionary lookups. The bundled JSON is intentionally not committed to Git because it is large. Run `npm run dictionary:bundle` once after cloning, or place the file at `assets/jmdict/jmdict-eng.json` yourself if you already have it.
+The app uses JMdict-derived data for local dictionary lookups. The bundled JSON is intentionally not committed to Git because it is large. Run `npm run bundle` when `assets/jmdict/jmdict-eng.json` is missing.
+
+To force a fresh re-bundle, delete `assets/jmdict/jmdict-eng.json` and run `npm run bundle` again.
 
 On first launch after the dictionary is present, the app creates its local cache in the user data directory. That may take a little while once; after that, startup is normal.
 

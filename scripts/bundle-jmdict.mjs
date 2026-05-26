@@ -36,7 +36,7 @@ const parseArgs = (argv) => {
         break;
       case '--help':
       case '-h':
-        console.log('Usage: npm run dictionary:bundle -- [--source <latest|url|path>]');
+        console.log('Usage: npm run bundle -- [--source <latest|url|path>]');
         process.exit(0);
         break;
       default:

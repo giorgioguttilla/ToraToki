@@ -6,11 +6,12 @@
   "main": ".vite/build/main.js",
   "private": true,
   "scripts": {
+    "setup": "npm install && npm run bundle",
     "dev": "electron-forge start",
     "start": "electron-forge start",
     "test": "vitest run",
     "test:watch": "vitest",
-    "dictionary:bundle": "node ./scripts/bundle-jmdict.mjs",
+    "bundle": "node ./scripts/ensure-jmdict-bundle.mjs",
     "icon:generate": "node ./scripts/generate-app-icon.mjs",
     "package": "electron-forge package",
     "make": "electron-forge make",
